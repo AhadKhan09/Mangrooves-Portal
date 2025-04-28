@@ -214,6 +214,121 @@ const afterMap = new mapboxgl.Map({
 });
 
 beforeMap.on('load', () => {
+
+  beforeMap.addSource("nationalBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:National_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+beforeMap.addLayer({
+    id: "nationalBoundary",
+    type: "line",
+    source: "nationalBoundary",
+    "source-layer": "National_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "black",
+        "line-width": 2,
+    },
+});
+
+// Provincial Boundary
+beforeMap.addSource("provincialBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:Provincial_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+beforeMap.addLayer({
+    id: "provincialBoundary",
+    type: "line",
+    source: "provincialBoundary",
+    "source-layer": "Provincial_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "green",
+        "line-width": 2,
+    },
+});
+
+// District Boundary
+beforeMap.addSource("districtBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:District_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+beforeMap.addLayer({
+    id: "districtBoundary",
+    type: "line",
+    source: "districtBoundary",
+    "source-layer": "District_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "purple",
+        "line-width": 1.5,
+    },
+});
+beforeMap.addLayer({
+    id: "districtBoundary_label",
+    type: "symbol",
+    source: "districtBoundary",
+    "source-layer": "District_Boundary",
+    minzoom: 6,
+    layout: {
+        visibility: "none",
+        "text-field": "{DISTRICT}",
+        "text-letter-spacing": 0.1,
+        "text-size": 12,
+        "text-offset": [0, 0],
+        "text-anchor": "center",
+    },
+    paint: {
+        "text-color": "purple",
+        "text-halo-color": "#000000",
+
+    },
+});
+let selectedTehsils = [];
+
+// Add the source
+beforeMap.addSource("tehsilBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:Tehsil_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+
+// Add the boundary line layer
+beforeMap.addLayer({
+    id: "TehsilBoundaryLine",
+    type: "line",
+    source: "tehsilBoundary",
+    "source-layer": "Tehsil_Boundary",
+    layout: {
+        visibility: "visible",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "black",
+        "line-width": 1,
+    },
+});
+
   beforeMap.addSource('layer2013', {
     type: 'raster',
     tiles: [
@@ -231,6 +346,121 @@ beforeMap.on('load', () => {
 });
 
 afterMap.on('load', () => {
+  afterMap.addSource("nationalBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:National_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+afterMap.addLayer({
+    id: "nationalBoundary",
+    type: "line",
+    source: "nationalBoundary",
+    "source-layer": "National_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "black",
+        "line-width": 2,
+    },
+});
+
+// Provincial Boundary
+afterMap.addSource("provincialBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:Provincial_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+afterMap.addLayer({
+    id: "provincialBoundary",
+    type: "line",
+    source: "provincialBoundary",
+    "source-layer": "Provincial_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "green",
+        "line-width": 2,
+    },
+});
+
+// District Boundary
+afterMap.addSource("districtBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:District_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+afterMap.addLayer({
+    id: "districtBoundary",
+    type: "line",
+    source: "districtBoundary",
+    "source-layer": "District_Boundary",
+    layout: {
+        visibility: "none",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "purple",
+        "line-width": 1.5,
+    },
+});
+afterMap.addLayer({
+    id: "districtBoundary_label",
+    type: "symbol",
+    source: "districtBoundary",
+    "source-layer": "District_Boundary",
+    minzoom: 6,
+    layout: {
+        visibility: "none",
+        "text-field": "{DISTRICT}",
+        "text-letter-spacing": 0.1,
+        "text-size": 12,
+        "text-offset": [0, 0],
+        "text-anchor": "center",
+    },
+    paint: {
+        "text-color": "purple",
+        "text-halo-color": "#000000",
+
+    },
+});
+let selectedTehsils = [];
+
+// Add the source
+afterMap.addSource("tehsilBoundary", {
+    type: "vector",
+    scheme: "tms",
+    tiles: [
+        `http://172.18.1.170:8080/geoserver/gwc/service/tms/1.0.0/abdul_sattar:Tehsil_Boundary@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+    ],
+});
+
+// Add the boundary line layer
+afterMap.addLayer({
+    id: "TehsilBoundaryLine",
+    type: "line",
+    source: "tehsilBoundary",
+    "source-layer": "Tehsil_Boundary",
+    layout: {
+        visibility: "visible",
+    },
+    paint: {
+        "line-opacity": 0.8,
+        "line-color": "black",
+        "line-width": 1,
+    },
+});
+
+
   afterMap.addSource('layer2024', {
     type: 'raster',
     tiles: [
