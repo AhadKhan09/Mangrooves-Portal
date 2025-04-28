@@ -217,7 +217,7 @@ beforeMap.on('load', () => {
   beforeMap.addSource('layer2013', {
     type: 'raster',
     tiles: [
-      "http://192.168.164.136:8080/geoserver/test/wms?" +
+      "http://192.168.11.136:8080/geoserver/test/wms?" +
       "service=WMS&version=1.1.1&request=GetMap&layers=test:2013_mangroves" +
       "&transparent=true&format=image/png&width=256&height=256&srs=EPSG:3857&bbox={bbox-epsg-3857}"
     ],
@@ -234,7 +234,7 @@ afterMap.on('load', () => {
   afterMap.addSource('layer2024', {
     type: 'raster',
     tiles: [
-      "http://192.168.164.136:8080/geoserver/test/wms?" +
+      "http://192.168.11.136:8080/geoserver/test/wms?" +
       "service=WMS&version=1.1.1&request=GetMap&layers=test:2023_Mangroves" +
       "&transparent=true&format=image/png&width=256&height=256&srs=EPSG:3857&bbox={bbox-epsg-3857}"
     ],
