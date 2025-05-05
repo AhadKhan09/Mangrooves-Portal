@@ -1,136 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mangrooves Monitoring</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <!-- Mapbox CSS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet" />
-  <link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" rel="stylesheet" />
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Sidebar -->
-  <div id="sidebar" class="hidden">
-    <ul class="nav flex-column">
-      <!-- Boundaries Dropdown -->
-      <li class="nav-item mb-2">
-        <button class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="collapse" data-bs-target="#boundariesSubmenu"
-                aria-expanded="false" aria-controls="boundariesSubmenu">
-          Boundaries <i class="bi bi-chevron-down"></i>
-        </button>
-        <div class="collapse" id="boundariesSubmenu">
-          <ul class="nav flex-column ms-3 mt-2">
-            <li class="nav-item"><a class="nav-link text-white" href="#">National Boundary</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Provincial Boundary</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">District Boundary</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Tehsil Boundary</a></li>
-          </ul>
-        </div>
-      </li>
-      <!-- National Layers Dropdown -->
-      <li class="nav-item mb-2">
-        <button class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="collapse" data-bs-target="#nationalSubmenu"
-                aria-expanded="false" aria-controls="nationalSubmenu">
-          National Layers <i class="bi bi-chevron-down"></i>
-        </button>
-        <div class="collapse" id="nationalSubmenu">
-          <ul class="nav flex-column ms-3 mt-2">
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 1</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 2</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 3</a></li>
-          </ul>
-        </div>
-      </li>
-      <!-- Global Layers Dropdown -->
-      <li class="nav-item mb-2">
-        <button class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="collapse" data-bs-target="#globalSubmenu"
-                aria-expanded="false" aria-controls="globalSubmenu">
-          Global Layers <i class="bi bi-chevron-down"></i>
-        </button>
-        <div class="collapse" id="globalSubmenu">
-          <ul class="nav flex-column ms-3 mt-2">
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 1</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 2</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="#">Option 3</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-dark py-0.5" style="background-color: #114d03; border-bottom: 3px solid white;">
-    <div class="container-fluid">
-      <div class="row w-100 align-items-center">
-        <!-- Sidebar Toggle -->
-        <div class="col-auto">
-          <button class="btn btn-outline-light me-2 custom-hover-btn" id="toggleSidebar">
-            <span class="navbar-toggler-icon"></span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mangrooves Monitoring</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="hidden">
+      <ul class="nav flex-column">
+        <!-- Boundaries Dropdown -->
+        <li class="nav-item mb-2">
+          <button
+            class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#boundariesSubmenu"
+            aria-expanded="false"
+            aria-controls="boundariesSubmenu"
+          >
+            Boundaries <i class="bi bi-chevron-down"></i>
           </button>
-        </div>
-        <!-- Logo -->
-        <div class="col-3">
-          <img src="/Media/NDMA_Pakistan_Logo.png" alt="Logo" width="70" height="70" class="me-2 logo-flip" />
-        </div>
-        <!-- Title -->
-        <div class="col-6 text-center text-white">
-          <span class="fw-bold fs-3">MANGROVES MONITORING PORTAL</span>
-        </div>
-      </div>
+          <div class="collapse" id="boundariesSubmenu">
+            <ul class="nav flex-column ms-3 mt-2">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">National Boundary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Provincial Boundary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">District Boundary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Tehsil Boundary</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- National Layers Dropdown -->
+        <li class="nav-item mb-2">
+          <button
+            class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#nationalSubmenu"
+            aria-expanded="false"
+            aria-controls="nationalSubmenu"
+          >
+            National Layers <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="collapse" id="nationalSubmenu">
+            <ul class="nav flex-column ms-3 mt-2">
+              <!-- Renamed Option 1 to Indus Delta -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Indus Delta</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Option 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Option 3</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- Global Layers Dropdown -->
+        <li class="nav-item mb-2">
+          <button
+            class="btn w-100 btn-outline-light d-flex justify-content-between align-items-center"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#globalSubmenu"
+            aria-expanded="false"
+            aria-controls="globalSubmenu"
+          >
+            Global Layers <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="collapse" id="globalSubmenu">
+            <ul class="nav flex-column ms-3 mt-2">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Option 1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Option 2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Option 3</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="main-container">
-    <!-- Map Panel -->
-    <div class="panel">
-      <div id="mapSingleContainer">
-        <!-- Map Container -->
-        <div id="mapContainer">
-          <div id="comparison-container">
-            <div id="before" class="map"></div>
-            <div id="after" class="map"></div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark py-0.5" style="background-color: #114d03; border-bottom: 3px solid white;">
+      <div class="container-fluid">
+        <div class="row w-100 align-items-center">
+          <!-- Sidebar Toggle -->
+          <div class="col-auto">
+            <button class="btn btn-outline-light me-2 custom-hover-btn" id="toggleSidebar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <!-- Logo -->
+          <div class="col-3">
+            <img src="/Media/NDMA_Pakistan_Logo.png" alt="Logo" width="70" height="70" class="me-2 logo-flip" />
+          </div>
+          <!-- Title -->
+          <div class="col-6 text-center text-white">
+            <span class="fw-bold fs-3">MANGROVES MONITORING PORTAL</span>
           </div>
         </div>
-        <!-- Map Controls -->
-        <div id="mapControls" class="map-controls">
-          <button id="zoomInBtn" class="btn btn-sm btn-outline-light"><i class="bi bi-zoom-in"></i></button>
-          <button id="zoomOutBtn" class="btn btn-sm btn-outline-light"><i class="bi bi-zoom-out"></i></button>
-          <button id="fullscreenBtn" class="btn btn-sm btn-outline-light"><i class="bi bi-arrows-fullscreen"></i></button>
+      </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- Map Panel -->
+      <div class="panel">
+        <div id="mapSingleContainer">
+          <!-- Map Container (Single Map) -->
+          <div id="mapContainer">
+            <div id="map" class="map"></div>
+          </div>
+          <!-- Map Controls (Fullscreen above and Zoom side-by-side) -->
+          <div id="mapControls">
+            <div class="full-control">
+              <button id="fullscreenBtn" class="btn">
+                <i class="bi bi-arrows-fullscreen"></i>
+              </button>
+            </div>
+            <div class="zoom-controls">
+              <button id="zoomInBtn" class="btn">
+                <i class="bi bi-zoom-in"></i>
+              </button>
+              <button id="zoomOutBtn" class="btn">
+                <i class="bi bi-zoom-out"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Indus Delta Slider Container (initially hidden) -->
+          <div id="indusDeltaSliderContainer" style="display: none;">
+            <input type="range" id="indusDeltaSlider" min="2017" max="2025" step="1" value="2017" />
+            <span id="indusDeltaYearLabel">2017</span>
+            <button id="indusDeltaPlayPauseBtn" class="btn btn-outline-light">Play</button>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Chart Panel -->
-    <div class="panel">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <div class="btn-group btn-group-sm">
-          <button class="btn btn-light" id="toggle-ndvi">NDVI</button>
-          <button class="btn btn-outline-light" id="toggle-mangrove">Mangroves</button>
+      <!-- Chart Panel -->
+      <div class="panel">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-light" id="toggle-ndvi">NDVI</button>
+            <button class="btn btn-outline-light" id="toggle-mangrove">Mangroves</button>
+          </div>
         </div>
+        <canvas id="seaLevelChart"></canvas>
       </div>
-      <canvas id="seaLevelChart"></canvas>
     </div>
-  </div>
-
-  <!-- Scripts -->
-  <!-- Bootstrap Bundle JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Mapbox JS -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
-  <!-- Mapbox Compare JS -->
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
-  <!-- Custom Script -->
-  <script src="script.js"></script>
-</body>
+    <!-- Scripts -->
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+  </body>
 </html>
